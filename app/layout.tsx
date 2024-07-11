@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const FontSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
+import {cn} from '@/lib/utils'
+
+const FontSans = Plus_Jakarta_Sans({ 
+  subsets: ["latin"],
+  weight: ['300','400','500','600','700'],
+  variable:'--font-sans'
+ });
 
 export const metadata: Metadata = {
   title: "CarePlus",
@@ -16,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={FontSans.className}>{children}</body>
+      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased',FontSans.variable)}>{children}</body>
     </html>
   );
 }
